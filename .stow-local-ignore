@@ -27,11 +27,8 @@ _darcs
 
 # Directories I created that don't need symlinking go here:
 
-docs
 .github
 wallpapers
 *.md
 .yamllint
-obsidian
-.deprecated
 .clang-format
