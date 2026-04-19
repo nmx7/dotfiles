@@ -1,0 +1,37 @@
+# Default stow .ignore starts here
+# Comments and blank lines are allowed.
+
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+\.gitmodules
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Default stow .ignore ends here
+
+# Directories I created that don't need symlinking go here:
+
+docs
+.github
+wallpapers
+*.md
+.yamllint
+obsidian
+.deprecated
+.clang-format

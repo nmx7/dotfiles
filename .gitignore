@@ -11,4 +11,13 @@
 *.sig
 
 pkg/
-src/
+undo/
+
+/.repro
+/.tests
+/build
+/debug
+/doc/tags
+node_modules
+tt.*
+*.un~
