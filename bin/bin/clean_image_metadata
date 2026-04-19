@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+
+# requires exiftool
+# macos:
+# brew install exiftool
+# requires pillow to verify image
+# pip install pillow
+
+import subprocess
+from pathlib import Path
+from PIL import Image
+
+def is_image(path):
+    try:
+        with Image.open(path) as img:
+            img.verify()  # Check if the file is broken
+        return True
+    except (IOError, SyntaxError):
+        return False
+
+def get_dirs(wd,seen=set()):
+    if wd in seen:
+        return []
+    seen.add(wd)
+    dirs = []
+    dirs.append(wd)
+    for dir in Path(wd).glob("*"):
+        if dir.is_dir() and not dir.name.startswith("."):
+            res = get_dirs(dir,seen)
+            for item in res:
+                dirs.append(item)
+    return dirs
+
+def clean_images(dir):
+    files = list(Path(dir).glob("*"))
+    for file in files:
+        if file.is_file() and not file.name.startswith("."):
+            path = None
+            if is_image(file):
+                path = file
+            else:
+                continue
+            exiftool_cmd = ["exiftool","-all=","-overwrite_original",f"{path}"]
+            subprocess.run(exiftool_cmd)
+            print(f"Cleaned metadata of {path}.")
+
+def main():
+    dirs = get_dirs(Path.cwd())
+    for dir in dirs:
+        clean_images(dir)
+
+if __name__ == "__main__":
+    main()
