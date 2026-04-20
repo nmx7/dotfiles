@@ -103,7 +103,7 @@ Custom utility scripts installed to `bin/`:
 ## Platform Notes
 
 - **macOS:** `bin/` scripts are installed to `/usr/local/bin` (requires `sudo`).
-- **Linux:** `bin/` scripts are installed to `~/bin`. VS Code settings are symlinked via `stow`.
+- **Linux:** `bin/` scripts are installed to `~/bin`.
 
 ## References
 
